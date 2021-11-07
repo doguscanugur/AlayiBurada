@@ -1,4 +1,5 @@
-﻿using System;
+﻿using AlayıBurada.MvcUI.App_Start;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Web;
@@ -13,6 +14,8 @@ namespace AlayıBurada.MvcUI
         {
             AreaRegistration.RegisterAllAreas();
             RouteConfig.RegisterRoutes(RouteTable.Routes);
+            ControllerBuilder.Current.SetControllerFactory(new NinjectControllerFactory()); //DI
+
         }
     }
 }

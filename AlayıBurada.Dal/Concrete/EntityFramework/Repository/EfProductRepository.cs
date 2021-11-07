@@ -12,15 +12,20 @@ namespace AlayıBurada.Dal.Concrete.EntityFramework.Repository
     public class EfProductRepository : EfGenericRepository<Product>, IProductRepository
     {
         
-        public EfProductRepository()
+        public EfProductRepository() :base()
         {
-            context = new AlayıBuradaContext();
+            // Burada context newlemeye gerek yok. yukarıdaki base keywordü ile parent classtaki ctor'u çalıştırdım. orda da contexti newlediğim için burada kullanabileceğim.
+            // Böylece sadece generic olarak kullanmak istediğim classları başka repository oluşturmadan kullanabilirim. (ÖRN: SADECE CRUD İŞLEMLERİ OLAN CLASSLAR)
         }
-        
-        
-        public List<Product> ProductList(int catagoriId)
+
+        public int ProductCount(int categoryId)
         {
-            return context.Product.Where(x => x.CategoryId == catagoriId).ToList();
+            return context.Product.Where(x => x.CategoryId == categoryId && x.ProductStatus == true).Count();
+        }
+
+        public List<Product> ProductList()
+        {
+            return context.Product.Where(x => x.ProductStatus == true).ToList();
         }
     }
 }

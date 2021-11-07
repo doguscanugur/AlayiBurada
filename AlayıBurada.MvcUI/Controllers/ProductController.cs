@@ -11,18 +11,19 @@ namespace AlayıBurada.MvcUI.Controllers
 {
     public class ProductController : Controller
     {
-        IProductService productService = new ProductManager(new EfProductRepository());
-        
-        
+        //IProductService productService = new ProductManager(new EfProductRepository());
+        IProductService ProductService;
+
+        public ProductController(IProductService productService)
+        {
+            ProductService = productService;
+        }
+
         public ActionResult Index()
         {
             return View();
         }
 
-        public ActionResult ProductList()
-        {
-            var list = productService.GetAll();
-            return View(list);
-        }
+    
     }
 }

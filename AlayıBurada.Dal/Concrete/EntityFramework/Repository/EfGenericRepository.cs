@@ -13,6 +13,10 @@ namespace AlayıBurada.Dal.Concrete.EntityFramework.Repository
     {
 
         public AlayıBuradaContext context;
+        public EfGenericRepository()
+        {
+            context = new AlayıBuradaContext();
+        }
 
         public T Add(T entity)
         {

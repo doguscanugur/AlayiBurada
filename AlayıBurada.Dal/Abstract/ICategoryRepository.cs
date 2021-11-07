@@ -7,9 +7,8 @@ using System.Threading.Tasks;
 
 namespace AlayıBurada.Dal.Abstract
 {
-    public interface IProductRepository:IGenericRepository<Product>
+    public interface ICategoryRepository: IGenericRepository<Category>
     {
-        List<Product> ProductList();
-        int ProductCount(int categoryId);
+        List<Category> GetAllCategories();
     }
 }

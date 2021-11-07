@@ -13,14 +13,21 @@ namespace AlayıBurada.Bll
     {
         IProductRepository productRepository;
 
-        public ProductManager(IProductRepository productRepository):base (productRepository)
+        public ProductManager(IProductRepository productRepository):base (productRepository) //Constructur'a geri gönder
         {
             this.productRepository = productRepository;
         }
 
-        public List<Product> ProductList(int catagoriId)
+        public int ProductCountByCategory(int categoryId)
         {
-            return productRepository.ProductList(catagoriId);   
+            return productRepository.ProductCount(categoryId);
         }
+
+        public List<Product> ProductList()
+        {
+            return productRepository.ProductList();   
+        }
+
+        
     }
 }

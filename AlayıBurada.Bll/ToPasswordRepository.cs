@@ -11,7 +11,7 @@
 
             UnicodeEncoding byteConverter = new UnicodeEncoding();
             return byteConverter.GetBytes(value);
-
+            //burada  değişiklik yapıldı
         }
 
         public static byte[] Byte8(string value)

@@ -20,11 +20,7 @@ namespace AlayıBurada.MvcUI.Controllers
         }
 
         // GET: Home
-        public ActionResult Index()
-        {
-
-            return View();
-        }
+        
         public ActionResult GetCategories()
         {
             CategoryProductViewModel categoryProductViewModel = new CategoryProductViewModel(); 

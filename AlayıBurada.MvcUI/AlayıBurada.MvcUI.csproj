@@ -127,9 +127,7 @@
     <Content Include="Views\Product\Index.cshtml" />
     <Content Include="Views\Product\ProductList.cshtml" />
     <Content Include="Views\Customer\Login.cshtml" />
-    <Content Include="Views\Home\Index.cshtml" />
     <Content Include="Views\Home\GetCategories.cshtml" />
-    <Content Include="Views\Home\ProductList.cshtml" />
     <Content Include="Views\Customer\Register.cshtml" />
     <None Include="Web.Debug.config">
       <DependentUpon>Web.config</DependentUpon>

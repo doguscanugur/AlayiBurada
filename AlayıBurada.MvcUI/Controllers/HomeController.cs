@@ -20,18 +20,24 @@ namespace AlayıBurada.MvcUI.Controllers
         }
 
         // GET: Home
-        
+
         public ActionResult GetCategories()
         {
-            CategoryProductViewModel categoryProductViewModel = new CategoryProductViewModel(); 
-            categoryProductViewModel.CategoryList = CategoryService.GetAllCategories();
-            categoryProductViewModel.ProductList = ProductService.ProductList();
-            return View(categoryProductViewModel);
+            //TempData["category-list"] = CategoryService.GetAllCategories();
+
+            //CategoryProductViewModel categoryProductViewModel = new CategoryProductViewModel(); 
+            //categoryProductViewModel.CategoryList = CategoryService.GetAllCategories();
+            //categoryProductViewModel.ProductList = ProductService.ProductList();
+            var model = ProductService.GetAll();
+            return View(model);
         }
-        //public ActionResult ProductList()
-        //{
-        //    var list = ProductService.ProductList();
-        //    return View(list);
-        //}
+
+        public PartialViewResult GetCategoryListToLeftSide()
+        {
+            //CategoryProductViewModel categoryProductViewModel = new CategoryProductViewModel();
+            //categoryProductViewModel.CategoryList = CategoryService.GetAllCategories();
+            var model = CategoryService.GetAll();
+            return PartialView(model);
+        }
     }
 }

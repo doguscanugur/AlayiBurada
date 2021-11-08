@@ -9,25 +9,25 @@ using System.Threading.Tasks;
 
 namespace AlayıBurada.Bll
 {
-    public class ProductManager:GenericManager<Product>,IProductService
+    public class ProductManager : GenericManager<Product>, IProductService
     {
         IProductRepository productRepository;
 
-        public ProductManager(IProductRepository productRepository):base (productRepository) //Constructur'a geri gönder
+        public ProductManager(IProductRepository productRepository) : base(productRepository) //Constructur'a geri gönder
         {
             this.productRepository = productRepository;
         }
 
-        public int ProductCountByCategory(int categoryId)
+        public List<Product> GetProductsByCategoryId(int id)
         {
-            return productRepository.ProductCount(categoryId);
+            return productRepository.GetProductsByCategoryId(id);
         }
 
         public List<Product> ProductList()
         {
-            return productRepository.ProductList();   
+            return productRepository.ProductList();
         }
 
-        
+
     }
 }

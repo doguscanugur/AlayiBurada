@@ -19,11 +19,18 @@ namespace AlayıBurada.MvcUI.Controllers
             ProductService = productService;
         }
 
+        [HttpGet]
         public ActionResult Index()
         {
             return View();
         }
 
-    
+        public ActionResult GetProduct(int id)
+        {
+            var model = ProductService.GetProductsByCategoryId(id);
+
+            return View(model);
+        }
+
     }
 }

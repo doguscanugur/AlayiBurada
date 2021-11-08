@@ -23,6 +23,7 @@
                 arrayByte[i] = Convert.ToByte(arrayChar[i]);
             }
             return arrayByte;
+            //deneme dcu
         }
        
         public string Sha512(string strLogin)

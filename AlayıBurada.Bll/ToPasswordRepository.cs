@@ -33,10 +33,25 @@
             }
             else
             {
-                SHA512Managed sifre = new SHA512Managed();
-                byte[] arySifre = ConvertItToByte(strLogin);
-                byte[] aryHash = sifre.ComputeHash(arySifre);
+                SHA512Managed password = new SHA512Managed();
+                byte[] aryPassword = ConvertItToByte(strLogin);
+                byte[] aryHash = password.ComputeHash(aryPassword);
                 return BitConverter.ToString(aryHash);
+            }
+        }
+        public string Md5(string strLogin) {
+            if (string.IsNullOrEmpty(strLogin)) {
+                throw new ArgumentNullException(@"There is nothing for encryption");
+            }
+            else {
+                MD5CryptoServiceProvider password = new MD5CryptoServiceProvider();
+                byte[] passwordbytes = password.ComputeHash(Encoding.UTF8.GetBytes(strLogin));
+                var sb = new StringBuilder();
+                foreach (byte b in passwordbytes) {
+                    sb.Append(b.ToString("x2").ToLower());
+
+                }
+                return sb.ToString();
             }
         }
     }

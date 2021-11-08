@@ -16,7 +16,7 @@ namespace AlayıBurada.Dal.Concrete.EntityFramework.Repository
         }
         public Customer CustomerLogin(string userName, string password)
         {
-            return context.Customer.Where(x => x.CustomerUserName == userName && x.CustomerPassword == password).FirstOrDefault();
+            return context.Customer.Where(x => x.CustomerUserName == userName && x.CustomerPassword == password).FirstOrDefault(); //Singleordefault?
         }
     }
 }

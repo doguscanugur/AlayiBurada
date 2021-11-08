@@ -12,9 +12,6 @@ namespace AlayıBurada.Interfaces
         
         //Sadece bu entity'e özgü metodlar gelecek . Mesela;
         List<Product> ProductList();
-        int ProductCountByCategory(int categoryId);
-
-        
-        
+        List<Product> GetProductsByCategoryId(int id);
     }
 }

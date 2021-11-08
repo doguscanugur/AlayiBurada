@@ -10,6 +10,7 @@ namespace AlayıBurada.Dal.Abstract
     public interface IProductRepository:IGenericRepository<Product>
     {
         List<Product> ProductList();
-        int ProductCount(int categoryId);
+        List<Product> GetProductsByCategoryId(int id);
+
     }
 }

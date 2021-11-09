@@ -32,5 +32,11 @@ namespace AlayıBurada.MvcUI.Controllers
             return View(model);
         }
 
+        public PartialViewResult GetProductById(int id) 
+        {
+            var model = ProductService.GetProductsByProductId(id);
+            return PartialView(model);
+        }
+
     }
 }

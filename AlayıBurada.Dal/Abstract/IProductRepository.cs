@@ -11,6 +11,7 @@ namespace AlayıBurada.Dal.Abstract
     {
         List<Product> ProductList();
         List<Product> GetProductsByCategoryId(int id);
+        List<Product> GetProductsByProductId(int id);
 
     }
 }

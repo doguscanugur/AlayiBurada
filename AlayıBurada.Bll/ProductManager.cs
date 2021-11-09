@@ -23,6 +23,11 @@ namespace AlayıBurada.Bll
             return productRepository.GetProductsByCategoryId(id);
         }
 
+        public List<Product> GetProductsByProductId(int id)
+        {
+            return productRepository.GetProductsByProductId(id);
+        }
+
         public List<Product> ProductList()
         {
             return productRepository.ProductList();

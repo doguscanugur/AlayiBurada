@@ -36,6 +36,7 @@ namespace AlayıBurada.MvcUI.Controllers
                     if (user != null)
                     {
                         Session["User"] = user;
+                      
                         return RedirectToAction("Index", "MainPage");
                     }
                 }

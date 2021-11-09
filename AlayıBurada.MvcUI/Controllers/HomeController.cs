@@ -20,7 +20,7 @@ namespace AlayıBurada.MvcUI.Controllers
         }
 
         // GET: Home
-
+         
         public ActionResult GetCategories()
         {
             //TempData["category-list"] = CategoryService.GetAllCategories();
@@ -37,6 +37,7 @@ namespace AlayıBurada.MvcUI.Controllers
             //CategoryProductViewModel categoryProductViewModel = new CategoryProductViewModel();
             //categoryProductViewModel.CategoryList = CategoryService.GetAllCategories();
             var model = CategoryService.GetAll();
+            
             return PartialView(model);
         }
     }

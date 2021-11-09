@@ -23,6 +23,11 @@ namespace AlayıBurada.Dal.Concrete.EntityFramework.Repository
             return context.Product.Where(x => x.ProductStatus == true && x.Category.CategoryId == id).ToList();
         }
 
+        public List<Product> GetProductsByProductId(int id)
+        {
+            return context.Product.Where(x => x.ProductStatus == true && x.ProductId == id).ToList();
+        }
+
         public List<Product> ProductList()
         {
             return context.Product.Where(x => x.ProductStatus == true).ToList();

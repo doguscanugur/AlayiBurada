@@ -105,6 +105,11 @@
     <Content Include="Components\js\bootstrap.js" />
     <Content Include="Components\js\jquery-1.10.2.js" />
     <Content Include="Global.asax" />
+    <None Include="Scripts\jquery-1.8.0.intellisense.js" />
+    <Content Include="Scripts\jquery-1.8.0.js" />
+    <Content Include="Scripts\jquery-1.8.0.min.js" />
+    <Content Include="Scripts\jquery.unobtrusive-ajax.js" />
+    <Content Include="Scripts\jquery.unobtrusive-ajax.min.js" />
     <Content Include="Web.config" />
   </ItemGroup>
   <ItemGroup>
@@ -132,6 +137,7 @@
     <Content Include="Views\Product\GetProduct.cshtml" />
     <Content Include="Views\Home\GetCategoryListToLeftSide.cshtml" />
     <Content Include="Views\Product\GetProductById.cshtml" />
+    <Content Include="Views\Product\AddToCart.cshtml" />
     <None Include="Web.Debug.config">
       <DependentUpon>Web.config</DependentUpon>
     </None>

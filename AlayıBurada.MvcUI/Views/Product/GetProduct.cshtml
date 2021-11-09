@@ -18,13 +18,16 @@
                         <h3> @item.ProductName</h3>
                         <p>Price : <strong>@item.ProductPrice</strong>₺  </p>
 
-                        <p><a href="#" class="btn btn-success" role="button">Sepete Ekle</a> 
-                        <a href="/Product/GetProductById/@item.ProductId/" class="btn btn-primary"  data-toggle="modal" data-target="#modal-secondary" role="button">Detayları Gör</a></p>
-                    </div>
+                        <p>
+                        <a>@Ajax.ActionLink("SepeteEkle", "AddToCart", "Product", new { id = item.ProductId }, new AjaxOptions { HttpMethod = "GET",UpdateTargetId = "cartList" }, new { @class = "btn btn-success" }) </a>
+
+                        <a href="/Product/GetProductById/@item.ProductId/" class="btn btn-primary" data-toggle="modal" data-target="#modal-secondary" role="button">Detayları Gör</a>
+                    </p>
                 </div>
             </div>
-        }
+        </div>
+    }
     </div>
 </div>
 
-@Html.Action("GetProductById","Product")
+@Html.Action("GetProductById", "Product")

@@ -18,6 +18,11 @@ namespace AlayıBurada.Bll
             this.productRepository = productRepository;
         }
 
+        public Product GetProduct(int id)
+        {
+            return productRepository.AddToBasket(id);
+        }
+
         public List<Product> GetProductsByCategoryId(int id)
         {
             return productRepository.GetProductsByCategoryId(id);

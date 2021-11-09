@@ -14,5 +14,6 @@ namespace AlayıBurada.Interfaces
         List<Product> ProductList();
         List<Product> GetProductsByCategoryId(int id);
         List<Product> GetProductsByProductId(int id);
+        Product GetProduct(int id);
     }
 }

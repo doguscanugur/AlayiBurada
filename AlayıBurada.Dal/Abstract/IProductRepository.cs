@@ -13,5 +13,7 @@ namespace AlayıBurada.Dal.Abstract
         List<Product> GetProductsByCategoryId(int id);
         List<Product> GetProductsByProductId(int id);
 
+        Product AddToBasket(int id);
+
     }
 }

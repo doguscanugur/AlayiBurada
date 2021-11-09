@@ -1,5 +1,7 @@
 ﻿using AlayıBurada.Bll;
 using AlayıBurada.Dal.Concrete.EntityFramework.Repository;
+using AlayıBurada.Entities.Models;
+using AlayıBurada.Entities.PocoModel;
 using AlayıBurada.Interfaces;
 using System;
 using System.Collections.Generic;
@@ -13,7 +15,6 @@ namespace AlayıBurada.MvcUI.Controllers
     {
         //IProductService productService = new ProductManager(new EfProductRepository());
         IProductService ProductService;
-
         public ProductController(IProductService productService)
         {
             ProductService = productService;
@@ -32,10 +33,25 @@ namespace AlayıBurada.MvcUI.Controllers
             return View(model);
         }
 
-        public PartialViewResult GetProductById(int id) 
+        public PartialViewResult GetProductById(int id)
         {
             var model = ProductService.GetProductsByProductId(id);
+            PocoCustomer c = (PocoCustomer)Session["User"];
+           
             return PartialView(model);
+        }
+
+        public ActionResult AddToCart(int id)
+        {
+            Product model = ProductService.GetProduct(id);
+
+            if (Session["sepet"] == null)
+                Session["sepet"] = new List<Product>();
+
+            if (model != null)
+                ((List<Product>)Session["sepet"]).Add(model);
+
+            return PartialView((List<Product>)Session["sepet"]);
         }
 
     }

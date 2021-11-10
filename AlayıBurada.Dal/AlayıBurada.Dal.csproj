@@ -51,11 +51,13 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Abstract\IBasketRepository.cs" />
     <Compile Include="Abstract\ICategoryRepository.cs" />
     <Compile Include="Abstract\ICustomerRepository.cs" />
     <Compile Include="Abstract\IGenericRepository.cs" />
     <Compile Include="Abstract\IProductRepository.cs" />
     <Compile Include="Concrete\EntityFramework\Context\AlayıBuradaContext.cs" />
+    <Compile Include="Concrete\EntityFramework\Repository\EfBasketRepository.cs" />
     <Compile Include="Concrete\EntityFramework\Repository\EfCategoryRepository.cs" />
     <Compile Include="Concrete\EntityFramework\Repository\EfCustomerRepository.cs" />
     <Compile Include="Concrete\EntityFramework\Repository\EfGenericRepository.cs" />

@@ -1,4 +1,6 @@
-﻿using System;
+﻿using AlayıBurada.Entities.Models;
+using AlayıBurada.Entities.PocoModel;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -6,8 +8,8 @@ using System.Threading.Tasks;
 
 namespace AlayıBurada.Interfaces
 {
-    interface IBasketService
+    public interface IBasketService:IGenericService<Basket>
     {
-        //Sadece bu entity'e özgü metodlar gelecek.
+        PocoBasket ConfirmToBasket (int productId, int customerId);
     }
 }

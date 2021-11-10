@@ -20,6 +20,8 @@ namespace AlayıBurada.MvcUI.Controllers
             ProductService = productService;
         }
 
+        
+
         [HttpGet]
         public ActionResult Index()
         {
@@ -35,15 +37,16 @@ namespace AlayıBurada.MvcUI.Controllers
 
         public PartialViewResult GetProductById(int id)
         {
-            var model = ProductService.GetProductsByProductId(id);
+            var userModel = ProductService.GetProductsByProductId(id);
             PocoCustomer c = (PocoCustomer)Session["User"];
            
-            return PartialView(model);
+            return PartialView(userModel);
         }
 
         public ActionResult AddToCart(int id)
         {
-            Product model = ProductService.GetProduct(id);
+             Product model = ProductService.GetProduct(id);
+            
 
             if (Session["sepet"] == null)
                 Session["sepet"] = new List<Product>();
@@ -52,7 +55,8 @@ namespace AlayıBurada.MvcUI.Controllers
                 ((List<Product>)Session["sepet"]).Add(model);
 
             return PartialView((List<Product>)Session["sepet"]);
-        }
+        }       
+
 
     }
 }

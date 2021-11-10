@@ -1,4 +1,5 @@
-﻿using AlayıBurada.Interfaces;
+﻿using AlayıBurada.Entities.Models;
+using AlayıBurada.Interfaces;
 using AlayıBurada.MvcUI.ViewModel;
 using System;
 using System.Collections.Generic;
@@ -40,5 +41,19 @@ namespace AlayıBurada.MvcUI.Controllers
             
             return PartialView(model);
         }
+        public ActionResult AddToCart(int id)
+        {
+            Product model = ProductService.GetProduct(id);
+
+
+            if (Session["sepet"] == null)
+                Session["sepet"] = new List<Product>();
+
+            if (model != null)
+                ((List<Product>)Session["sepet"]).Add(model);
+
+            return PartialView((List<Product>)Session["sepet"]);
+        }
+
     }
 }

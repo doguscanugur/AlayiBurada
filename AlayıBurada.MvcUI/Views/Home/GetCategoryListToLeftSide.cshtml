@@ -1,9 +1,12 @@
 ﻿@model List<AlayıBurada.Entities.Models.Category>
 <ul class="list-group">
+    <li class="list-group-item">
+        <a href="/Home/GetCategories">***Bütün Ürünleri Gör***</a>
+    </li>
     @foreach (var item in Model)
     {
         <li class="list-group-item">
-            <a class="btn" href="/Product/GetProduct/@item.CategoryId">@item.CategoryName</a>
+            <a href="/Product/GetProduct/@item.CategoryId">@item.CategoryName</a>
         </li>
     }
 

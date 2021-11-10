@@ -22,9 +22,10 @@ namespace AlayıBurada.MvcUI.App_Start
 
         private void AddBllBinds()
         {
-            this.kernel.Bind<IProductService>().To<ProductManager>().WithConstructorArgument("productRepository", new EfProductRepository()); 
-            this.kernel.Bind<ICustomerService>().To<CustomerManager>().WithConstructorArgument("customerRepository", new EfCustomerRepository()); 
-            this.kernel.Bind<ICategoryService>().To<CategoryManager>().WithConstructorArgument("categoryRepository", new EfCategoryRepository()); 
+            this.kernel.Bind<IProductService>().To<ProductManager>().WithConstructorArgument("productRepository", new EfProductRepository());
+            this.kernel.Bind<ICustomerService>().To<CustomerManager>().WithConstructorArgument("customerRepository", new EfCustomerRepository());
+            this.kernel.Bind<ICategoryService>().To<CategoryManager>().WithConstructorArgument("categoryRepository", new EfCategoryRepository());
+            this.kernel.Bind<IBasketService>().To<BasketManager>().WithConstructorArgument("basketRepository", new EfBasketRepository());
         }
 
         protected override IController GetControllerInstance(RequestContext requestContext, Type controllerType)

@@ -45,6 +45,7 @@ namespace AlayıBurada.MvcUI.Controllers
 
         public ActionResult AddToCart(int id)
         {
+            int total = 0;
              Product model = ProductService.GetProduct(id);
             
 
@@ -54,6 +55,11 @@ namespace AlayıBurada.MvcUI.Controllers
             if (model != null)
                 ((List<Product>)Session["sepet"]).Add(model);
 
+            foreach (var item in (List<Product>)Session["sepet"])
+            {
+                total += item.ProductPrice;
+            }
+            ViewBag.total = total;
             return PartialView((List<Product>)Session["sepet"]);
         }       
 

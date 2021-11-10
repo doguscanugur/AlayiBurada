@@ -140,6 +140,8 @@
     <Content Include="Views\Home\GetCategoryListToLeftSide.cshtml" />
     <Content Include="Views\Product\GetProductById.cshtml" />
     <Content Include="Views\Product\AddToCart.cshtml" />
+    <Content Include="Views\Home\AddToCart.cshtml" />
+    <Content Include="Views\Basket\ConfirmTheBasket.cshtml" />
     <None Include="Web.Debug.config">
       <DependentUpon>Web.config</DependentUpon>
     </None>
@@ -150,7 +152,6 @@
   <ItemGroup>
     <Folder Include="App_Data\" />
     <Folder Include="Models\" />
-    <Folder Include="Views\Basket\" />
   </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="..\AlayıBurada.Bll\AlayıBurada.Bll.csproj">

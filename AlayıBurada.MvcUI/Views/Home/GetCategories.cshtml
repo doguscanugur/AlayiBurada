@@ -18,7 +18,7 @@
                         <h3> @item.ProductName</h3>
                         <p>Price : <strong>@item.ProductPrice</strong>₺  </p>
 
-                        <p><a href="#" class="btn btn-success" role="button">Add To Cart</a> <a href="#" class="btn btn-primary" role="button">See Details</a></p>
+                        <p>@Ajax.ActionLink("SepeteEkle", "AddToCart", "Product", new { id = item.ProductId }, new AjaxOptions { HttpMethod = "GET", UpdateTargetId = "cartList" }, new { @class = "btn btn-success" }) <a href="#" class="btn btn-primary" role="button">Detayları Gör</a></p>
                     </div>
                 </div>
             </div>

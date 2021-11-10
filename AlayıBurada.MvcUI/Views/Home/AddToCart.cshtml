@@ -1,0 +1,39 @@
+﻿
+@model List<AlayıBurada.Entities.Models.Product>
+
+<thead>
+    <tr>
+        <th style="width: 60%">Ürün Adı</th>
+        <th class="text-center" style="width: 10%">Ürün Fiyatı</th>
+        <th style="width: 10%">#</th>
+    </tr>
+</thead>
+<tbody>
+    @foreach (var item in Model)
+    {
+        <tr>
+            <td>@item.ProductName</td>
+            <td class="text-center"> ₺@item.ProductPrice</td>
+            <td> <a class="btn btn-warning">Sil</a></td>
+        </tr>
+    }
+
+    <tr>
+        <td></td>
+        <td>
+            <a class="btn btn-success">Satın Al</a>
+
+            <a class="btn btn-info">Sepeti Temizle</a>
+        </td>
+    </tr>
+    <tr>
+        <td></td>
+        <td>
+            TOPLAM UCRET
+        </td>
+        <td>
+            <p> ₺</p>
+        </td>
+    </tr>
+</tbody>
+

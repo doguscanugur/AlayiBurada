@@ -65,6 +65,7 @@ namespace AlayıBurada.MvcUI.Controllers
         {
             customer.CustomerStatus = true;
             customer.Address.AddressStatus = true;
+            customer.CustomerPassword = new ToPasswordRepository().Sha512(customer.CustomerPassword);
             CustomerService.Add(customer);
             return View("GetCategories", "Home");
         }

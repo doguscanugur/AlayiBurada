@@ -1,5 +1,6 @@
 namespace AlayıBurada.Entities.Models
 {
+    using AlayıBurada.Entities.PocoModel;
     using System;
     using System.Collections.Generic;
     using System.ComponentModel.DataAnnotations;
@@ -45,5 +46,16 @@ namespace AlayıBurada.Entities.Models
 
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
         public virtual ICollection<Comment> Comment { get; set; }
+
+        public static Customer ConvertToCustomer(PocoCustomer pocoCustomer)
+        {
+            return new Customer()
+            {
+                CustomerId = pocoCustomer.CustomerId,
+                CustomerEmail = pocoCustomer.CustomerEmail,
+                CustomerName = pocoCustomer.CustomerName,
+                CustomerUserName = pocoCustomer.CustomerUserName
+            };
+        }
     }
 }

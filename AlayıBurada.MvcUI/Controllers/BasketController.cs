@@ -1,4 +1,6 @@
-﻿using AlayıBurada.Interfaces;
+﻿using AlayıBurada.Entities.Models;
+using AlayıBurada.Entities.PocoModel;
+using AlayıBurada.Interfaces;
 using AlayıBurada.MvcUI.ViewModel;
 using System;
 using System.Collections.Generic;
@@ -11,26 +13,24 @@ namespace AlayıBurada.MvcUI.Controllers
     public class BasketController : Controller
     {
         IBasketService BasketService;
+        BasketViewModel basketViewModel;
 
         public BasketController(IBasketService basketService)
         {
             BasketService = basketService;
         }
-
         public ActionResult ConfirmTheBasket()
         {
-            return View();
-        }
-        [HttpPost]
-        public ActionResult ConfirmTheBasket(BasketViewModel basketViewModel)
-        {
-            if (ModelState.IsValid)
+            object myBasket = Session["sepet"];
+            object myCustomer = Session["User"];
+            if (myBasket != null && myCustomer != null && (myBasket as List<Product>).Count > 0)
             {
-                var basket = BasketService.ConfirmToBasket(basketViewModel.ProductId, basketViewModel.CustomerId);
-                return View(basketViewModel);
+                List<Product> products = myBasket as List<Product>;
+                bool result = BasketService.ConfirmToBasket(products, Customer.ConvertToCustomer(myCustomer as PocoCustomer));
+                return View();
             }
-            else
-                return RedirectToAction("Login", "Customer");
+            //is valid check
+            return RedirectToAction("Login", "Customer");
         }
 
         //ConfirmTheBasket metodunun ayağa kalkması için parametre lazım, parametrenin dolması için de metodun post işlemiyle desteklenmesi lazım

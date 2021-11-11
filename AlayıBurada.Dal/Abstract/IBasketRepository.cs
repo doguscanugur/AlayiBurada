@@ -5,9 +5,10 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace AlayıBurada.Dal.Abstract {
-    public interface IBasketRepository : IGenericRepository<Basket> {
-
-        Basket ConfirmToBasket (int productId, int customerId);
+namespace AlayıBurada.Dal.Abstract
+{
+    public interface IBasketRepository : IGenericRepository<Basket>
+    {
+        bool ConfirmToBasket(int productID, int customerID);
     }
 }

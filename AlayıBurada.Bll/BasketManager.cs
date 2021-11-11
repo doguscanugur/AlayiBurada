@@ -8,27 +8,33 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace AlayıBurada.Bll {
-    public class BasketManager : GenericManager<Basket>, IBasketService {
+namespace AlayıBurada.Bll
+{
+    public class BasketManager : GenericManager<Basket>, IBasketService
+    {
 
 
         IBasketRepository basketRepository;
 
-        public BasketManager (IBasketRepository basketRepository) : base(basketRepository) {
+        public BasketManager(IBasketRepository basketRepository) : base(basketRepository)
+        {
             this.basketRepository = basketRepository;
         }
 
-        public PocoBasket ConfirmToBasket (int productId, int customerId) {
-            if (productId == 0 && customerId == 0) {
-
-                throw new Exception("Purchase failed");
+        public bool ConfirmToBasket(List<Product> products, Customer customer)
+        {
+            bool customerVerified = customer == null || customer.CustomerId == 0;
+            bool productsVerified = products == null || products.Count <= 0;
+            if (productsVerified && customerVerified)
+            {
+                return false;
             }
-            var basket = basketRepository.ConfirmToBasket(productId, customerId);
-            return new PocoBasket {
-                CustomerId = basket.CustomerId,
-                ProductId = basket.ProductId,
-
-            };
+            bool result = false;
+            foreach (Product product in products)
+            {
+                 result=basketRepository.ConfirmToBasket(product.ProductId, customer.CustomerId);
+            }
+            return result;
         }
     }
 }

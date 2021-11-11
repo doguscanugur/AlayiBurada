@@ -10,6 +10,6 @@ namespace AlayıBurada.Interfaces
 {
     public interface IBasketService:IGenericService<Basket>
     {
-        PocoBasket ConfirmToBasket (int productId, int customerId);
+        bool ConfirmToBasket (List<Product> products, Customer customer);
     }
 }

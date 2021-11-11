@@ -6,15 +6,19 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace AlayıBurada.Dal.Concrete.EntityFramework.Repository {
-    public class EfBasketRepository : EfGenericRepository<Basket>, IBasketRepository {
-        public EfBasketRepository () :base() {
+namespace AlayıBurada.Dal.Concrete.EntityFramework.Repository
+{
+    public class EfBasketRepository : EfGenericRepository<Basket>, IBasketRepository
+    {
+        public EfBasketRepository() : base()
+        {
 
         }
 
-        public Basket ConfirmToBasket (int productId, int customerId) {
-
-            return context.Basket.Where(x => x.ProductId == productId && x.CustomerId == customerId).FirstOrDefault();
+        public bool ConfirmToBasket(int productID, int customerID)
+        {
+            Basket basket = Add(new Basket { ProductId = productID, CustomerId = customerID });
+            return basket == null ? false : true;
         }
     }
 }

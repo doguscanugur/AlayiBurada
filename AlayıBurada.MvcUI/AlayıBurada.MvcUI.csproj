@@ -115,6 +115,7 @@
   <ItemGroup>
     <Compile Include="App_Start\NinjectControllerFactory.cs" />
     <Compile Include="App_Start\RouteConfig.cs" />
+    <Compile Include="Controllers\AdminController.cs" />
     <Compile Include="Controllers\BasketController.cs" />
     <Compile Include="Controllers\CustomerController.cs" />
     <Compile Include="Controllers\HomeController.cs" />
@@ -123,6 +124,7 @@
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="ViewModel\AdminViewModel.cs" />
     <Compile Include="ViewModel\BasketViewModel.cs" />
     <Compile Include="ViewModel\CategoryProductViewModel.cs" />
     <Compile Include="ViewModel\CustomerViewModel.cs" />
@@ -142,6 +144,8 @@
     <Content Include="Views\Product\AddToCart.cshtml" />
     <Content Include="Views\Home\AddToCart.cshtml" />
     <Content Include="Views\Basket\ConfirmTheBasket.cshtml" />
+    <Content Include="Views\Admin\Index.cshtml" />
+    <Content Include="Views\Admin\AdminMainPage.cshtml" />
     <None Include="Web.Debug.config">
       <DependentUpon>Web.config</DependentUpon>
     </None>

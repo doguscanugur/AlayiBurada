@@ -26,6 +26,7 @@ namespace AlayıBurada.MvcUI.App_Start
             this.kernel.Bind<ICustomerService>().To<CustomerManager>().WithConstructorArgument("customerRepository", new EfCustomerRepository());
             this.kernel.Bind<ICategoryService>().To<CategoryManager>().WithConstructorArgument("categoryRepository", new EfCategoryRepository());
             this.kernel.Bind<IBasketService>().To<BasketManager>().WithConstructorArgument("basketRepository", new EfBasketRepository());
+            this.kernel.Bind<IAdminService>().To<AdminManager>().WithConstructorArgument("adminRepsitory", new EfAdminRepository());
         }
 
         protected override IController GetControllerInstance(RequestContext requestContext, Type controllerType)

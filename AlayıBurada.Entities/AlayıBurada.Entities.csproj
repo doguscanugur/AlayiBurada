@@ -58,6 +58,7 @@
     <Compile Include="Models\Customer.cs" />
     <Compile Include="Models\Product.cs" />
     <Compile Include="Models\sysdiagrams.cs" />
+    <Compile Include="PocoModel\PocoAdmin.cs" />
     <Compile Include="PocoModel\PocoBasket.cs" />
     <Compile Include="PocoModel\PocoCustomer.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />

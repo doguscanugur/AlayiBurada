@@ -36,7 +36,6 @@ namespace AlayıBurada.Bll
             }
             var pass = new ToPasswordRepository().Sha512(password);
             var user = customerRepository.CustomerLogin(userName, pass);
-
             if (user == null)
             {
                 throw new Exception("User Name or Password is wrong.");

@@ -7,9 +7,10 @@
     <meta name="description" content="">
     <meta name="author" content="">
     <title>Alayı Burada</title>
-    <!-- Bootstrap core CSS -->
-    <link href="~/Components/css/bootstrap.css" rel="stylesheet" />
-    <!-- Fontawesome core CSS -->
+    <!-- Bootstrap  CSS -->
+    @*<link href="~/Components/css/bootstrap.css" rel="stylesheet" />*@
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
+    <!-- Fontawesome  CSS -->
     <link href="~/Components/css/font-awesome.min.css" rel="stylesheet" />
     <!--GOOGLE FONT -->
     <link href='http://fonts.googleapis.com/css?family=Open+Sans' rel='stylesheet' type='text/css'>
@@ -19,26 +20,35 @@
 
 </head>
 <body>
-    <nav class="navbar navbar-default" role="navigation">
-        <div class="container-fluid">
-            <!-- Brand and toggle get grouped for better mobile display -->
-            <div class="navbar-header">
-                <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#bs-example-navbar-collapse-1">
-                    <span class="sr-only">Toggle navigation</span>
-                    <span class="icon-bar"></span>
-                    <span class="icon-bar"></span>
-                    <span class="icon-bar"></span>
-                </button>
-                <a class="navbar-brand" href="#"><strong>Alayı</strong> BURADA</a>
-            </div>
+    @{var customerName = Html.Action("GetLoggedCustomerName", "Customer"); }
 
-            <!-- Collect the nav links, forms, and other content for toggling -->
-            <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
+    <nav class="navbar navbar-expand-lg navbar navbar-dark bg-dark mb-3">
+        <a class="navbar-brand" href="#">ALAYI BURADA</a>
+        <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+            <span class="navbar-toggler-icon"></span>
+        </button>
 
-            </div>
-            <!-- /.navbar-collapse -->
+        <div class="collapse navbar-collapse" id="navbarSupportedContent">
+            <ul class="navbar-nav mr-auto">
+            </ul>
+            <form class="form-inline my-2 my-lg-0">
+                <div class="mr-5">
+
+                    <p class="text-light">Giriş Yapan Kullanıcı:</p>
+                    <p class="text-light"><strong>@customerName</strong></p>
+
+                </div>
+                @Ajax.ActionLink("SEPETİ GÖSTER", "AddToCart", "Product", new AjaxOptions { HttpMethod = "GET", UpdateTargetId = "cartList" }, new { @class = "btn btn-outline-info my-2 my-sm-0 mr-2" })
+                @if (MvcHtmlString.IsNullOrEmpty(customerName))
+                {
+                    <a href="/Customer/Login/" class="btn btn-outline-success my-2 my-sm-0 mr-2" type="submit">GİRİŞ YAP</a>
+                }
+                else
+                {
+                    <a href="/Customer/LogOut/" class="btn btn-danger my-2 my-sm-0 mr-2" type="submit">ÇIKIŞ YAP</a>
+                }
+            </form>
         </div>
-        <!-- /.container-fluid -->
     </nav>
     <div class="container-fluid">
         <div class="row">
@@ -60,8 +70,8 @@
 
             <div class="col-md-1">
 
-            <table id="cartList">
-            </table>
+                <table class="table mr-2" id="cartList">
+                </table>
             </div>
 
 
@@ -69,8 +79,8 @@
     </div>
 
     @*<footer class="footer">
-        &copy; 2021 | &nbsp; All Rights Reserved| &nbsp; Email us: burakyuzz@gmail.com - d.c.ugur@gmail.com
-    </footer>*@
+            &copy; 2021 | &nbsp; All Rights Reserved| &nbsp; Email us: burakyuzz@gmail.com - d.c.ugur@gmail.com
+        </footer>*@
 
     <script src="~/Components/js/jquery-1.10.2.js"></script>
     <script src="~/Components/js/bootstrap.js"></script>

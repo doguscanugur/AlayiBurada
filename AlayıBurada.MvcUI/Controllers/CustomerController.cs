@@ -1,12 +1,8 @@
 ﻿using AlayıBurada.Bll;
-using AlayıBurada.Dal.Concrete.EntityFramework.Repository;
 using AlayıBurada.Entities.Models;
 using AlayıBurada.Interfaces;
 using AlayıBurada.MvcUI.ViewModel;
 using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Web;
 using System.Web.Mvc;
 
 namespace AlayıBurada.MvcUI.Controllers
@@ -68,6 +64,7 @@ namespace AlayıBurada.MvcUI.Controllers
             customer.CustomerPassword = new ToPasswordRepository().Sha512(customer.CustomerPassword);
             CustomerService.Add(customer);
             return View("GetCategories", "Home");
+            
         }
     }
 }

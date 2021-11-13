@@ -11,7 +11,7 @@ namespace AlayıBurada.Bll
 {
     public class ProductManager : GenericManager<Product>, IProductService
     {
-        IProductRepository productRepository;
+        private readonly IProductRepository productRepository;
 
         public ProductManager(IProductRepository productRepository) : base(productRepository) //Constructur'a geri gönder
         {

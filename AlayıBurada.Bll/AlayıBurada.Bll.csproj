@@ -44,6 +44,7 @@
     <Compile Include="AdminManager.cs" />
     <Compile Include="BasketManager.cs" />
     <Compile Include="CategoryManager.cs" />
+    <Compile Include="CommentManager.cs" />
     <Compile Include="CustomerManager.cs" />
     <Compile Include="GenericManager.cs" />
     <Compile Include="ProductManager.cs" />

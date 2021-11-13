@@ -7,15 +7,17 @@ using System.Linq;
 using System.Web;
 using System.Web.Mvc;
 
-namespace AlayıBurada.MvcUI.Controllers {
-    public class AdminController : Controller {
+namespace AlayıBurada.MvcUI.Controllers
+{
+    public class AdminController : Controller
+    {
         IProductService productService;
         ICustomerService customerService;
         IBasketService basketService;
         IAdminService adminService;
 
-
-        public AdminController (IProductService productService, ICustomerService customerService, IBasketService basketService, IAdminService adminService) {
+        public AdminController(IProductService productService, ICustomerService customerService, IBasketService basketService, IAdminService adminService)
+        {
             this.productService = productService;
             this.customerService = customerService;
             this.basketService = basketService;
@@ -23,29 +25,37 @@ namespace AlayıBurada.MvcUI.Controllers {
         }
 
 
-        public ActionResult Index () {
+        [Authorize()]
+        public ActionResult Index()
+        {
             return View();
         }
 
-        public ActionResult AdminLoginPage (AdminViewModel adminViewModel) {
+        public ActionResult AdminLoginPage(AdminViewModel adminViewModel)
+        {
 
-            try {
+            try
+            {
 
-                if (ModelState.IsValid) {
+                if (ModelState.IsValid)
+                {
                     var admin = adminService.AdminLogin(adminViewModel.AdminUserName, adminViewModel.AdminPassword);
-                    if (admin != null) {
+                    if (admin != null)
+                    {
                         Session["Admin"] = admin;
                         return RedirectToAction("AdminMainPage", "Admin");
                     }
                 }
-                else {
-                    return View(adminViewModel); 
+                else
+                {
+                    return View(adminViewModel);
                 }
 
 
 
             }
-            catch (Exception error) {
+            catch (Exception error)
+            {
 
                 ModelState.AddModelError("", error.Message);
                 return View(adminViewModel);
@@ -54,10 +64,11 @@ namespace AlayıBurada.MvcUI.Controllers {
 
 
         }
-        
-        
-        public ActionResult AdminMainPage () { //Admin başarılı giriş yaptığında karşısına çıkacak olan sayfa
-            if (Session["Admin"]!=null) {
+
+        public ActionResult AdminMainPage()
+        { //Admin başarılı giriş yaptığında karşısına çıkacak olan sayfa
+            if (Session["Admin"] != null)
+            {
                 return View();
             }
             return View("AdminLoginPage", "Admin");
@@ -67,63 +78,72 @@ namespace AlayıBurada.MvcUI.Controllers {
         //CRUD İŞLEMLERİ//
 
         //KULLANICI İŞLEMLERİ//
-        public PartialViewResult ListOfCustomers () { //Müşterileri Listele
-            
+        public PartialViewResult ListOfCustomers()
+        { //Müşterileri Listele
+
             List<Customer> customers = customerService.GetAll();
             return PartialView(customers);
         }
-        
-        public PartialViewResult AddCustomer (Customer customer) { //Müşteri ekle
+
+        public PartialViewResult AddCustomer(Customer customer)
+        { //Müşteri ekle
             customerService.Add(customer);
             return PartialView();
         }
-        
-        
-        public PartialViewResult DeleteCustomer(int id) { //id ye göre müşteri sil
-     
+
+
+        public PartialViewResult DeleteCustomer(int id)
+        { //id ye göre müşteri sil
+
             return PartialView(customerService.Remove(id));
         }
-        
-        public PartialViewResult UpdateCustomer (Customer customer) { //Müşteri güncelle
+
+        public PartialViewResult UpdateCustomer(Customer customer)
+        { //Müşteri güncelle
             customerService.Update(customer);
             return PartialView();
         }
 
         ////////////////////////////////// ürün işlemleri ///////////////////////////////////////
 
-        public PartialViewResult ListOfProducts () { //Ürünleri Listele
+        public PartialViewResult ListOfProducts()
+        { //Ürünleri Listele
 
             List<Product> products = productService.GetAll();
             return PartialView(products);
         }
 
-        public PartialViewResult AddProduct (Product product) { //Ürün ekle
+        public PartialViewResult AddProduct(Product product)
+        { //Ürün ekle
             productService.Add(product);
             return PartialView();
         }
 
 
-        public PartialViewResult DeleteProduct (int id) { //id ye göre ürün sil
+        public PartialViewResult DeleteProduct(int id)
+        { //id ye göre ürün sil
 
             return PartialView(productService.Remove(id));
         }
 
-        public PartialViewResult UpdateProduct (Product product) { //Ürün güncelle
+        public PartialViewResult UpdateProduct(Product product)
+        { //Ürün güncelle
             productService.Update(product);
             return PartialView();
         }
 
-        public PartialViewResult ListAllOrders () { // ürünlerin hepsini getir
+        public PartialViewResult ListAllOrders()
+        { // ürünlerin hepsini getir
             basketService.GetAll();
             return PartialView();
         }
-        
+
         //YAPILACAK
 
 
         //public PartialViewResult ListOrdersByCustomer (int id) {
 
-            
+
         //}
     }
 }

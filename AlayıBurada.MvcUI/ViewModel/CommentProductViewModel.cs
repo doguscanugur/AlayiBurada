@@ -6,9 +6,10 @@ using System.Web;
 
 namespace AlayıBurada.MvcUI.ViewModel
 {
-    public class CategoryProductViewModel
+    public class CommentProductViewModel
     {
-        //public List<Category> CategoryList { get; set; }
-        //public List<Product> ProductList { get; set; }
+        public Product Product { get; set; }
+        public List<Comment> Comments { get; set; }
+
     }
 }

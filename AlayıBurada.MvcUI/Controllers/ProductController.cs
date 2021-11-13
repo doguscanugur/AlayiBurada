@@ -3,6 +3,7 @@ using AlayıBurada.Dal.Concrete.EntityFramework.Repository;
 using AlayıBurada.Entities.Models;
 using AlayıBurada.Entities.PocoModel;
 using AlayıBurada.Interfaces;
+using AlayıBurada.MvcUI.ViewModel;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -13,14 +14,15 @@ namespace AlayıBurada.MvcUI.Controllers
 {
     public class ProductController : Controller
     {
-        //IProductService productService = new ProductManager(new EfProductRepository());
         IProductService ProductService;
-        public ProductController(IProductService productService)
+        ICommentService CommentService;
+        public ProductController(IProductService productService, ICommentService commentService)
         {
             ProductService = productService;
+            CommentService = commentService;
         }
 
-        
+
 
         [HttpGet]
         public ActionResult Index()
@@ -39,15 +41,15 @@ namespace AlayıBurada.MvcUI.Controllers
         {
             var userModel = ProductService.GetProductsByProductId(id);
             PocoCustomer c = (PocoCustomer)Session["User"];
-           
+
             return PartialView(userModel);
         }
 
         public ActionResult AddToCart(int id)
         {
             int total = 0;
-             Product model = ProductService.GetProduct(id);
-            
+            Product model = ProductService.GetProduct(id);
+
 
             if (Session["sepet"] == null)
                 Session["sepet"] = new List<Product>();
@@ -61,7 +63,22 @@ namespace AlayıBurada.MvcUI.Controllers
             }
             ViewBag.total = total;
             return PartialView((List<Product>)Session["sepet"]);
-        }       
+        }
+
+        public ActionResult SeeDetails(int id)
+        {
+            Product product = ProductService.Get(id);
+            List<Comment> comments = CommentService.GetComments(product);
+            ViewBag.commentCount = comments.Count;
+
+            CommentProductViewModel cpModel = new CommentProductViewModel()
+            {
+                Product = product,
+                Comments = comments
+            };
+
+            return View(cpModel);
+        }
 
 
     }

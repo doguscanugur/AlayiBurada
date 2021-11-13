@@ -18,12 +18,6 @@ namespace AlayıBurada.Bll
         {
             this.customerRepository = customerRepository;
         }
-
-        //public void AddCustomer(Customer customer)
-        //{
-        //    customerRepository.Add(customer);
-        //}
-
         public PocoCustomer CustomerLogin(string userName, string password)
         {
             if (string.IsNullOrEmpty(userName.Trim()))

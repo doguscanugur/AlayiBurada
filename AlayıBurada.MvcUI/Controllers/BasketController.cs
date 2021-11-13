@@ -33,12 +33,5 @@ namespace AlayıBurada.MvcUI.Controllers
             return RedirectToAction("Login", "Customer");
         }
 
-        //ConfirmTheBasket metodunun ayağa kalkması için parametre lazım, parametrenin dolması için de metodun post işlemiyle desteklenmesi lazım
-        //bir türlü post yapamadım. ben postu yapsam bile CustomerId yi nasıl yollayacaz onu da bilmiyom
-        //o yüzden sessionda tuttuğumuz liste yok mu sepetteki ürünler listesi. BasketService.ConfirmToBasket(BURAYA SESSION LİSTESİ)
-        // Yollayacaz. arka tarafta da listenin içinden ProductId leri alıp basacak.
-        //Customer ı  da zaten Session["user"] da tutuyoz. yani bizim metot şu hale geldi
-        //BasketService.ConfirmToBasket(SEPETTEKİ_URUN_LISTESİ,SESSIONDAKI_KİŞİNİN_ID)
-        // ama beynim durduğu için yapamadım dursun yarın bakcam.
     }
 }

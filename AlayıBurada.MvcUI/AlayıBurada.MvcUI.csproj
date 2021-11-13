@@ -101,6 +101,7 @@
     <Content Include="Components\css\bootstrap.css" />
     <Content Include="Components\css\font-awesome.min.css" />
     <Content Include="Components\css\logincss.css" />
+    <Content Include="Components\css\see-details-style.css" />
     <Content Include="Components\css\style.css" />
     <Content Include="Components\js\bootstrap.js" />
     <Content Include="Components\js\jquery-1.10.2.js" />
@@ -128,24 +129,24 @@
     <Compile Include="ViewModel\BasketViewModel.cs" />
     <Compile Include="ViewModel\CategoryProductViewModel.cs" />
     <Compile Include="ViewModel\CustomerViewModel.cs" />
+    <Compile Include="ViewModel\CommentProductViewModel.cs" />
   </ItemGroup>
   <ItemGroup>
     <Content Include="Views\web.config" />
     <None Include="packages.config" />
     <Content Include="Views\Shared\_Layout.cshtml" />
-    <Content Include="Views\Product\Index.cshtml" />
     <Content Include="Views\Product\ProductList.cshtml" />
     <Content Include="Views\Customer\Login.cshtml" />
     <Content Include="Views\Home\GetCategories.cshtml" />
     <Content Include="Views\Customer\Register.cshtml" />
     <Content Include="Views\Product\GetProduct.cshtml" />
     <Content Include="Views\Home\GetCategoryListToLeftSide.cshtml" />
-    <Content Include="Views\Product\GetProductById.cshtml" />
     <Content Include="Views\Product\AddToCart.cshtml" />
     <Content Include="Views\Home\AddToCart.cshtml" />
     <Content Include="Views\Basket\ConfirmTheBasket.cshtml" />
     <Content Include="Views\Admin\Index.cshtml" />
     <Content Include="Views\Admin\AdminMainPage.cshtml" />
+    <Content Include="Views\Product\SeeDetails.cshtml" />
     <None Include="Web.Debug.config">
       <DependentUpon>Web.config</DependentUpon>
     </None>

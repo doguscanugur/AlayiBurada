@@ -5,10 +5,11 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace AlayıBurada.Interfaces
+namespace AlayıBurada.Dal.Abstract
 {
-    public interface ICommentService
+    public interface ICommentRepository : IGenericRepository<Comment>
     {
-        List<Comment> GetComments(Product product); 
+        List<Comment> GetComments(Product product);
+
     }
 }

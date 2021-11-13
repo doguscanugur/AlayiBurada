@@ -3,11 +3,6 @@
     ViewBag.Title = "GetCategories";
     Layout = "~/Views/Shared/_Layout.cshtml";
 }
-
-
-<div class="col-md-9">
-
-
     <div class="row">
         @foreach (var item in Model)
         {
@@ -16,9 +11,9 @@
                     <img src="https://picsum.photos/200/200" alt="" />
                     <div class="caption">
                         <h3> @item.ProductName</h3>
-                        <p>Price : <strong>@item.ProductPrice</strong>₺  </p>
+                        <p>Fiyat : <strong>@item.ProductPrice</strong>₺  </p>
 
-                        <p>@Ajax.ActionLink("SepeteEkle", "AddToCart", "Product", new { id = item.ProductId }, new AjaxOptions { HttpMethod = "GET", UpdateTargetId = "cartList" }, new { @class = "btn btn-success" }) <a href="#" class="btn btn-primary" role="button">Detayları Gör</a></p>
+                        <p>@Ajax.ActionLink("Sepete Ekle", "AddToCart", "Product", new { id = item.ProductId }, new AjaxOptions { HttpMethod = "GET", UpdateTargetId = "cartList" }, new { @class = "btn btn-success" }) <a href="/Product/SeeDetails/@item.ProductId" class="btn btn-primary" role="button">Detayları Gör</a></p>
                     </div>
                 </div>
             </div>
@@ -36,5 +31,3 @@
             <li><a href="#">&raquo;</a></li>
         </ul>
     </div>
-
-</div>

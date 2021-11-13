@@ -4,12 +4,14 @@ using System.ComponentModel.DataAnnotations;
 using System.Linq;
 using System.Web;
 
-namespace AlayıBurada.MvcUI.ViewModel {
-    public class BasketViewModel {
+namespace AlayıBurada.MvcUI.ViewModel
+{
+    public class BasketViewModel
+    {
 
-        [Required]
-        public int CustomerId { get; set; }
-        [Required]
-        public int ProductId { get; set; }
+        //[Required]
+        //public int CustomerId { get; set; }
+        //[Required]
+        //public int ProductId { get; set; }
     }
 }

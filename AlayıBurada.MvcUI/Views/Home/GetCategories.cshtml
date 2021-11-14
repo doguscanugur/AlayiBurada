@@ -1,33 +1,56 @@
-﻿@model List<AlayıBurada.Entities.Models.Product>
+﻿@model  PagedList.IPagedList<AlayıBurada.Entities.Models.Product>
+@using PagedList
+@using PagedList.Mvc
 @{
     ViewBag.Title = "GetCategories";
     Layout = "~/Views/Shared/_Layout.cshtml";
 }
-    <div class="row">
-        @foreach (var item in Model)
-        {
-            <div class="col-md-4 text-center col-sm-6 col-xs-6">
-                <div class="thumbnail product-box">
-                    <img src="https://picsum.photos/200/200" alt="" />
-                    <div class="caption">
-                        <h3> @item.ProductName</h3>
-                        <p>Fiyat : <strong>@item.ProductPrice</strong>₺  </p>
+<div class="row">
+    @foreach (var item in Model)
+    {
+        <div class="col-md-4 text-center col-sm-6 col-xs-6">
+            <div class="thumbnail product-box">
+                <img src="https://picsum.photos/200/200" alt="" />
+                <div class="caption">
+                    <h3> @item.ProductName</h3>
+                    <p>Fiyat : <strong>@item.ProductPrice</strong>₺  </p>
 
-                        <p>@Ajax.ActionLink("Sepete Ekle", "AddToCart", "Product", new { id = item.ProductId }, new AjaxOptions { HttpMethod = "GET", UpdateTargetId = "cartList" }, new { @class = "btn btn-success" }) <a href="/Product/SeeDetails/@item.ProductId" class="btn btn-primary" role="button">Detayları Gör</a></p>
-                    </div>
+                    <p>@Ajax.ActionLink("Sepete Ekle", "AddToCart", "Product", new { id = item.ProductId }, new AjaxOptions { HttpMethod = "GET", UpdateTargetId = "cartList" }, new { @class = "btn btn-success" }) <a href="/Product/SeeDetails/@item.ProductId" class="btn btn-primary" role="button">Detayları Gör</a></p>
                 </div>
             </div>
-        }
-    </div>
+        </div>
+    }
+</div>
+<div class="d-flex justify-content-center">
+    <div class="card-footer bg-light mx-auto">
+        <nav aria-label="Contacts Page Navigation">
+            <ul class="pagination justify-content-center m-0">
+                <li>
+                </li>
+                @Html.PagedListPager((IPagedList)Model, page => Url.Action("GetCategories", "Home", new { page }), PagedListRenderOptions.ClassicPlusFirstAndLast)
+                @Model.TotalItemCount üründen   @Model.FirstItemOnPage ile @Model.LastItemOnPage gösteriliyor.
 
-    <div class="row">
-        <ul class="pagination alg-right-pad">
-            <li><a href="#">&laquo;</a></li>
-            <li><a href="#">1</a></li>
-            <li><a href="#">2</a></li>
-            <li><a href="#">3</a></li>
-            <li><a href="#">4</a></li>
-            <li><a href="#">5</a></li>
-            <li><a href="#">&raquo;</a></li>
-        </ul>
+            </ul>
+        </nav>
     </div>
+</div>
+
+@*@Html.PagedListPager(Model, i=> Url.Action("GetCategories","Home",new {i, search= Request.QueryString["search"] }))*@
+
+@*<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
+    <script>
+        $(".searchText").on("keyup", function () {
+            var txtEnter = $(this).val().toLowerCase();
+            var AllContents = document.querySelectorAll("#ContentDiv");
+
+            AllContents.forEach(function (eachContent) {
+                var eachWriterNameSurname = eachContent.children[0].children[1].children[0].children[0].children[0].textContent.toLowerCase();
+                if (eachWriterNameSurname.indexOf(txtEnter) === -1) {
+                    eachContent.setAttribute("style", "display : none !important");
+                }
+                else {
+                    eachContent.setAttribute("style", "display : block");
+                }
+            })
+        })
+    </script>*@

@@ -1,6 +1,7 @@
 ﻿using AlayıBurada.Entities.Models;
 using AlayıBurada.Interfaces;
 using AlayıBurada.MvcUI.ViewModel;
+using PagedList;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -21,24 +22,16 @@ namespace AlayıBurada.MvcUI.Controllers
         }
 
         // GET: Home
-         
-        public ActionResult GetCategories()
-        {
-            //TempData["category-list"] = CategoryService.GetAllCategories();
 
-            //CategoryProductViewModel categoryProductViewModel = new CategoryProductViewModel(); 
-            //categoryProductViewModel.CategoryList = CategoryService.GetAllCategories();
-            //categoryProductViewModel.ProductList = ProductService.ProductList();
-            var model = ProductService.GetAll();
+        public ActionResult GetCategories(int? page)
+        {
+            var model = ProductService.GetAll().ToPagedList(page ?? 1, 6);
             return View(model);
         }
 
         public PartialViewResult GetCategoryListToLeftSide()
         {
-            //CategoryProductViewModel categoryProductViewModel = new CategoryProductViewModel();
-            //categoryProductViewModel.CategoryList = CategoryService.GetAllCategories();
             var model = CategoryService.GetAll();
-            
             return PartialView(model);
         }
         public ActionResult AddToCart(int id)

@@ -5,6 +5,8 @@ This project was prepared by [Burak Akyüz](https://www.linkedin.com/in/burakyuz
 **AlayiBurada E-Commerce** is developed using enterprise architecture with *ASP.NET MVC*. These layers are BusinessLayer, DataAccessLayer, Entities, Interfaces, UserInterface.
 EntityFramework, PagedList, jQueryAjax, ELMAH libraries are used in this project. But it can be used in MicroORM.
 
+*You can also reach the Database File from AlayiBurada/AlayıBurada.MvcUI/DB/ProjectDB.bak*
+
 **JQuery Ajax** is used in cart operations.
 Unhandled Errors encountered during RunTime are recorded in the database with the help of **ELMAH.**
 **PagedList** is used for paging operations.

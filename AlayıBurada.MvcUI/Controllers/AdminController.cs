@@ -156,11 +156,6 @@ namespace AlayıBurada.MvcUI.Controllers {
                 Product = productService.Get(id),
                 CategoryList = categoryService.GetAll()
             };
-
-            //var model = productService.Get(id);
-            //if (model == null) {
-            //    HttpNotFound();
-            //}
             return View(model);
         }
 

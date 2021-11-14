@@ -62,8 +62,9 @@ namespace AlayıBurada.MvcUI.Controllers
                     total += item.ProductPrice;
                 }
                 ViewBag.total = total;
+                return PartialView((List<Product>)Session["sepet"]);
             }
-            return PartialView((List<Product>)Session["sepet"]);
+            return PartialView();
         }
 
         public ActionResult SeeDetails(int id)

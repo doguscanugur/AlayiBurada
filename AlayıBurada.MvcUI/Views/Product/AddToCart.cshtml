@@ -11,35 +11,38 @@
 <tbody>
     @using (Html.BeginForm("ConfirmTheBasket", "Basket", FormMethod.Post))
     {
-        foreach (var item in Model)
+        if (Model != null)
         {
-            <tr>
-                <td>@item.ProductName</td>
-                <td class="text-center"> ₺@item.ProductPrice</td>
+            foreach (var item in Model)
+            {
+                <tr>
+                    <td>@item.ProductName</td>
+                    <td class="text-center"> ₺@item.ProductPrice</td>
 
-                <td> <a href="/Basket/DeleteProduct/@item.ProductId" class="btn btn-warning">Sil</a></td>
+                    <td> <a href="/Basket/DeleteProduct/@item.ProductId" class="btn btn-warning">Sil</a></td>
+                </tr>
+            }
+
+            <tr>
+                <td>
+                </td>
+                <td>
+                    <a type="submit" href="/Basket/ConfirmTheBasket/" class="btn btn-success">Satın Al</a>
+                    <a href="/Basket/CleanBasket/" class="btn btn-danger my-3">Sepeti Temizle</a>
+                </td>
+                <td>
+                </td>
+            </tr>
+            <tr>
+                <td></td>
+                <td>
+                    <p> TOPLAM UCRET </p>
+                </td>
+                <td>
+                    <p>@ViewBag.total₺</p>
+                </td>
             </tr>
         }
-
-        <tr>
-            <td>
-            </td>
-            <td>
-                <a type="submit" href="/Basket/ConfirmTheBasket/" class="btn btn-success">Satın Al</a>
-                <a href="/Basket/CleanBasket/" class="btn btn-danger my-3">Sepeti Temizle</a>
-            </td>
-            <td>
-            </td>
-        </tr>
-        <tr>
-            <td></td>
-            <td>
-                <p> TOPLAM UCRET </p>
-            </td>
-            <td>
-                <p>@ViewBag.total₺</p>
-            </td>
-        </tr>
     }
 </tbody>
 

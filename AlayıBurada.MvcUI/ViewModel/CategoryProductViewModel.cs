@@ -8,7 +8,7 @@ namespace AlayıBurada.MvcUI.ViewModel
 {
     public class CategoryProductViewModel
     {
-        //public List<Category> CategoryList { get; set; }
-        //public List<Product> ProductList { get; set; }
+        public IEnumerable<Category> CategoryList { get; set; }
+        public Product Product { get; set; }
     }
 }

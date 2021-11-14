@@ -2,6 +2,7 @@
 using AlayıBurada.Dal.Concrete.EntityFramework.Context;
 using System;
 using System.Collections.Generic;
+using System.Data.Entity;
 using System.Data.Entity.Migrations;
 using System.Linq;
 using System.Text;
@@ -69,9 +70,16 @@ namespace AlayıBurada.Dal.Concrete.EntityFramework.Repository
 
         public T Update(T entity)
         {
+            
+            
             context.Set<T>().AddOrUpdate(entity);
             context.SaveChanges();
             return entity;
+
+            //var updatedEntity = context.Entry(entity);
+            //updatedEntity.State = EntityState.Modified;
+            //context.SaveChanges();
+            //return updatedEntity;
         }
     }
 }

@@ -147,6 +147,14 @@
     <Content Include="Views\Admin\Index.cshtml" />
     <Content Include="Views\Admin\AdminMainPage.cshtml" />
     <Content Include="Views\Product\SeeDetails.cshtml" />
+    <Content Include="Views\Admin\AdminLoginPage.cshtml" />
+    <Content Include="Views\Shared\_AdminLayout.cshtml" />
+    <Content Include="Views\Admin\AdminOperationsListToLeftSide.cshtml" />
+    <Content Include="Views\Admin\ListOfCustomers.cshtml" />
+    <Content Include="Views\Admin\AddCustomer.cshtml" />
+    <Content Include="Views\Admin\UpdateCustomer.cshtml" />
+    <Content Include="Views\Admin\ListOfProducts.cshtml" />
+    <Content Include="Views\Admin\AddProduct.cshtml" />
     <None Include="Web.Debug.config">
       <DependentUpon>Web.config</DependentUpon>
     </None>

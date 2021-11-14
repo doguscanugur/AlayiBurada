@@ -1,0 +1,78 @@
+﻿@model IEnumerable<AlayıBurada.Entities.Models.Customer>
+
+@{
+    Layout = null;
+}
+
+<!DOCTYPE html>
+
+<html>
+<head>
+    <meta name="viewport" content="width=device-width" />
+    <title>ListOfCustomers</title>
+</head>
+<body>
+    <p>
+        @Html.ActionLink("Yeni Müşteri Ekle", "AddCustomer")
+    </p>
+    <table class="table">
+        <tr>
+            <th>
+                @Html.DisplayNameFor(model => model.CustomerUserName)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.CustomerName)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.CustomerEmail)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Address.AddressCity)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Address.AddressDisctrict)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Address.AddressDescription)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.CustomerStatus)
+            </th>
+            <th></th>
+        </tr>
+    
+    @foreach (var item in Model) {
+    <tr>
+        <td>
+            @Html.DisplayFor(modelItem => item.CustomerUserName)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.CustomerName)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.CustomerEmail)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.Address.AddressCity)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.Address.AddressDisctrict)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.Address.AddressDescription)
+        </td>
+
+
+        <td>
+            @Html.DisplayFor(modelItem => item.CustomerStatus)
+        </td>
+        <td>
+            @Html.ActionLink("Güncelle", "UpdateCustomer", new {  id = item.CustomerId }) |            
+            @Html.ActionLink("Sil", "DeleteCustomer", new {  id=item.CustomerId  })
+        </td>
+    </tr>
+    }
+    
+    </table>
+</body>
+</html>

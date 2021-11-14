@@ -17,18 +17,14 @@ namespace AlayıBurada.MvcUI.Controllers
 
         public HomeController(ICategoryService categoryService, IProductService productService)
         {
-            this.CategoryService = categoryService;
-            this.ProductService = productService;
+            CategoryService = categoryService;
+            ProductService = productService;
         }
-
-        // GET: Home
-
         public ActionResult GetCategories(int? page)
         {
             var model = ProductService.GetAll().ToPagedList(page ?? 1, 6);
             return View(model);
         }
-
         public PartialViewResult GetCategoryListToLeftSide()
         {
             var model = CategoryService.GetAll();
@@ -44,9 +40,7 @@ namespace AlayıBurada.MvcUI.Controllers
 
             if (model != null)
                 ((List<Product>)Session["sepet"]).Add(model);
-
             return PartialView((List<Product>)Session["sepet"]);
         }
-
     }
 }

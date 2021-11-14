@@ -4,6 +4,7 @@ using AlayıBurada.Entities.Models;
 using AlayıBurada.Entities.PocoModel;
 using AlayıBurada.Interfaces;
 using AlayıBurada.MvcUI.ViewModel;
+using PagedList;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -28,9 +29,9 @@ namespace AlayıBurada.MvcUI.Controllers
             return View();
         }
 
-        public ActionResult GetProduct(int id)
+        public ActionResult GetProduct(int id, int? page)
         {
-            var model = ProductService.GetProductsByCategoryId(id);
+            var model = ProductService.GetProductsByCategoryId(id).ToPagedList(page ?? 1, 6);
 
             return View(model);
         }
@@ -39,7 +40,6 @@ namespace AlayıBurada.MvcUI.Controllers
         {
             var userModel = ProductService.GetProductsByProductId(id);
             PocoCustomer c = (PocoCustomer)Session["User"];
-
             return PartialView(userModel);
         }
 
@@ -72,7 +72,6 @@ namespace AlayıBurada.MvcUI.Controllers
             Product product = ProductService.Get(id);
             List<Comment> comments = CommentService.GetComments(product);
             ViewBag.commentCount = comments.Count;
-
             CommentProductViewModel cpModel = new CommentProductViewModel()
             {
                 Product = product,

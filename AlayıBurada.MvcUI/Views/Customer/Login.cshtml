@@ -33,7 +33,7 @@
 
                         <!-- Password input -->
                         <div class="form-outline mb-3">
-                            @Html.TextBoxFor(x => x.CustomerPassword, new { @class = "form-control form-control-lg", placeholder = "Enter a password" })
+                            @Html.TextBoxFor(x => x.CustomerPassword, new { @class = "form-control form-control-lg", placeholder = "Enter a password", type="password" })
                             @Html.ValidationMessageFor(x => x.CustomerPassword, "",new { @class = "text-danger" })
                         </div>
 

@@ -44,6 +44,9 @@
     <WarningLevel>4</WarningLevel>
   </PropertyGroup>
   <ItemGroup>
+    <Reference Include="Elmah, Version=1.2.14706.0, Culture=neutral, processorArchitecture=MSIL">
+      <HintPath>..\packages\elmah.corelibrary.1.2.2\lib\Elmah.dll</HintPath>
+    </Reference>
     <Reference Include="EntityFramework, Version=6.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089, processorArchitecture=MSIL">
       <HintPath>..\packages\EntityFramework.6.4.4\lib\net45\EntityFramework.dll</HintPath>
     </Reference>
@@ -104,6 +107,7 @@
     </Reference>
   </ItemGroup>
   <ItemGroup>
+    <Content Include="App_Readme\Elmah.txt" />
     <Content Include="Components\css\bootstrap.css" />
     <Content Include="Components\css\font-awesome.min.css" />
     <Content Include="Components\css\logincss.css" />
@@ -114,6 +118,7 @@
     <Content Include="Content\PagedList.css" />
     <Content Include="Global.asax" />
     <None Include="Scripts\jquery-1.8.0.intellisense.js" />
+    <Content Include="img\img-1.gif" />
     <Content Include="Scripts\jquery-1.8.0.js" />
     <Content Include="Scripts\jquery-1.8.0.min.js" />
     <Content Include="Scripts\jquery.unobtrusive-ajax.js" />
@@ -127,8 +132,10 @@
     <Compile Include="Controllers\BasketController.cs" />
     <Compile Include="Controllers\CommentController.cs" />
     <Compile Include="Controllers\CustomerController.cs" />
+    <Compile Include="Controllers\ErrorController.cs" />
     <Compile Include="Controllers\HomeController.cs" />
     <Compile Include="Controllers\ProductController.cs" />
+    <Compile Include="Filters\ElmahExceptionFilter.cs" />
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
@@ -163,6 +170,8 @@
     <Content Include="Views\Admin\ListOfProducts.cshtml" />
     <Content Include="Views\Admin\AddProduct.cshtml" />
     <Content Include="Views\Comment\AddComment.cshtml" />
+    <Content Include="Views\Shared\Error.cshtml" />
+    <Content Include="Views\Error\NotFound.cshtml" />
     <!--<Content Include="Views\Admin\AdminLoginPage.cshtml" />-->
     <!--<Content Include="Views\Shared\_AdminLayout.cshtml" />-->
     <!--<Content Include="Views\Admin\AdminOperationsListToLeftSide.cshtml" />-->
@@ -181,7 +190,6 @@
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
-    <Folder Include="Models\" />
   </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="..\AlayıBurada.Bll\AlayıBurada.Bll.csproj">

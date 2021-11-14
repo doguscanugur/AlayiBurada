@@ -15,7 +15,7 @@ namespace AlayıBurada.MvcUI.Controllers {
         IAdminService adminService;
         ICategoryService categoryService;
 
-        public AdminController (IProductService productService, ICustomerService customerService, IBasketService basketService, IAdminService adminService,ICategoryService categoryService) {
+        public AdminController (IProductService productService, ICustomerService customerService, IBasketService basketService, IAdminService adminService, ICategoryService categoryService) {
             this.productService = productService;
             this.customerService = customerService;
             this.basketService = basketService;
@@ -82,7 +82,7 @@ namespace AlayıBurada.MvcUI.Controllers {
         [HttpGet]
         public ActionResult AddCustomer () {
 
-            
+
             return View();
         }
 
@@ -149,23 +149,41 @@ namespace AlayıBurada.MvcUI.Controllers {
             return RedirectToAction("ListOfProducts");
         }
 
+        [HttpGet]
+        public ActionResult UpdateProduct (int id) {
+
+            var model = new CategoryProductViewModel() {
+                Product = productService.Get(id),
+                CategoryList = categoryService.GetAll()
+            };
+
+            //var model = productService.Get(id);
+            //if (model == null) {
+            //    HttpNotFound();
+            //}
+            return View(model);
+        }
+
+        [HttpPost]
         public ActionResult UpdateProduct (Product product) { //Ürün güncelle
 
-            productService.Update(product);
-            return View();
+            var model = new CategoryProductViewModel() {
+                Product = productService.Update(product),
+                CategoryList = categoryService.GetAll()
+            };
+            return View(model);
         }
 
         public ActionResult ListAllOrders () { // siparişlerin hepsini getir
-            basketService.GetAll();
-            return View();
+            List<Basket> baskets = basketService.GetAll();
+            return View(baskets);
         }
 
-        //YAPILACAK
+        public ActionResult DeleteOrder (int id) {
 
-
-        //public PartialViewResult ListOrdersByCustomer (int id) {
-
-
-        //}
+            basketService.Remove(id);
+            return RedirectToAction("ListAllOrders");
+        }
+    
     }
 }

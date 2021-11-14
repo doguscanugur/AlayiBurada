@@ -1,0 +1,69 @@
+﻿@model IEnumerable<AlayıBurada.Entities.Models.Basket>
+
+@{
+    Layout = "~/Views/Shared/_AdminLayout.cshtml";
+}
+
+<!DOCTYPE html>
+
+<html>
+<head>
+    <meta name="viewport" content="width=device-width" />
+    <title>ListAllOrders</title>
+</head>
+<body>
+    
+    <table class="table" id="tblOrders">
+        <tr>
+            <th>
+                @Html.DisplayNameFor(model => model.Customer.CustomerName)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Product.ProductName)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Product.ProductPrice)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Customer.Address.AddressCity)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Customer.Address.AddressDisctrict)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Customer.Address.AddressDescription)
+            </th>
+
+        </tr>
+    
+    @foreach (var item in Model) {
+    <tr>
+        <td>
+            @Html.DisplayFor(modelItem => item.Customer.CustomerName)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.Product.ProductName)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.Product.ProductPrice)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.Customer.Address.AddressCity)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.Customer.Address.AddressDisctrict)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.Customer.Address.AddressDescription)
+        </td>
+
+
+        <td>
+            @Html.ActionLink("Siparişi Sil", "DeleteOrder", new { id = item.BasketId })
+        </td>
+    </tr>
+    }
+    
+    </table>
+</body>
+</html>

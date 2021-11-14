@@ -1,12 +1,9 @@
 ﻿using AlayıBurada.Bll;
-using AlayıBurada.Dal.Concrete.EntityFramework.Repository;
 using AlayıBurada.Entities.Models;
+using AlayıBurada.Entities.PocoModel;
 using AlayıBurada.Interfaces;
 using AlayıBurada.MvcUI.ViewModel;
 using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Web;
 using System.Web.Mvc;
 
 namespace AlayıBurada.MvcUI.Controllers
@@ -38,7 +35,7 @@ namespace AlayıBurada.MvcUI.Controllers
                         Session["User"] = user;
 
 
-                  
+
                         return RedirectToAction("GetCategories", "Home");
                     }
                 }
@@ -68,6 +65,24 @@ namespace AlayıBurada.MvcUI.Controllers
             customer.CustomerPassword = new ToPasswordRepository().Sha512(customer.CustomerPassword);
             CustomerService.Add(customer);
             return View("GetCategories", "Home");
+
+        }
+
+        public ActionResult GetLoggedCustomerName()
+        {
+            PocoCustomer logedCustomer = (PocoCustomer)Session["User"];
+            if (logedCustomer != null)
+            {
+                string loggedUserName = ((PocoCustomer)Session["User"]).CustomerName;
+                return Content(loggedUserName);
+
+            }
+            return Content(null);
+        }
+        public ActionResult LogOut()
+        {
+            Session.Abandon();
+            return RedirectToAction("GetCategories", "Home");
         }
     }
 }

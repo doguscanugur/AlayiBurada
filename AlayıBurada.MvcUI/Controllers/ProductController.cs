@@ -22,8 +22,6 @@ namespace AlayıBurada.MvcUI.Controllers
             CommentService = commentService;
         }
 
-
-
         [HttpGet]
         public ActionResult Index()
         {
@@ -45,24 +43,28 @@ namespace AlayıBurada.MvcUI.Controllers
             return PartialView(userModel);
         }
 
-        public ActionResult AddToCart(int id)
+        public ActionResult AddToCart(int? id)
         {
             int total = 0;
-            Product model = ProductService.GetProduct(id);
-
-
-            if (Session["sepet"] == null)
-                Session["sepet"] = new List<Product>();
-
-            if (model != null)
-                ((List<Product>)Session["sepet"]).Add(model);
-
-            foreach (var item in (List<Product>)Session["sepet"])
+            if (id != null)
             {
-                total += item.ProductPrice;
+                Product model = ProductService.GetProduct((int)id);
+                if (Session["sepet"] == null)
+                    Session["sepet"] = new List<Product>();
+
+                if (model != null)
+                    ((List<Product>)Session["sepet"]).Add(model);
             }
-            ViewBag.total = total;
-            return PartialView((List<Product>)Session["sepet"]);
+            if (Session["sepet"] != null)
+            {
+                foreach (var item in (List<Product>)Session["sepet"])
+                {
+                    total += item.ProductPrice;
+                }
+                ViewBag.total = total;
+                return PartialView((List<Product>)Session["sepet"]);
+            }
+            return PartialView();
         }
 
         public ActionResult SeeDetails(int id)
@@ -76,10 +78,7 @@ namespace AlayıBurada.MvcUI.Controllers
                 Product = product,
                 Comments = comments
             };
-
             return View(cpModel);
         }
-
-
     }
 }

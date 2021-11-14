@@ -13,7 +13,6 @@ namespace AlayıBurada.MvcUI.Controllers
     public class BasketController : Controller
     {
         IBasketService BasketService;
-        BasketViewModel basketViewModel;
 
         public BasketController(IBasketService basketService)
         {
@@ -21,16 +20,38 @@ namespace AlayıBurada.MvcUI.Controllers
         }
         public ActionResult ConfirmTheBasket()
         {
-            object myBasket = Session["sepet"];
+            object productsInBasket = Session["sepet"];
             object myCustomer = Session["User"];
-            if (myBasket != null && myCustomer != null && (myBasket as List<Product>).Count > 0)
+            if (productsInBasket != null && myCustomer != null && (productsInBasket as List<Product>).Count > 0)
             {
-                List<Product> products = myBasket as List<Product>;
+                List<Product> products = productsInBasket as List<Product>;
                 bool result = BasketService.ConfirmToBasket(products, Customer.ConvertToCustomer(myCustomer as PocoCustomer));
+                Session["sepet"] = null;
                 return View();
             }
             //is valid check
             return RedirectToAction("Login", "Customer");
+        }
+
+        public ActionResult DeleteProduct(int id)
+        {
+            object productsInBasket = Session["sepet"];
+            foreach (Product product in (List<Product>)productsInBasket)
+            {
+                if (product.ProductId == id)
+                {
+                    ((List<Product>)productsInBasket).Remove(product);
+                    break;
+                }
+            }
+
+            return RedirectToAction("GetCategories", "Home");
+        }
+
+        public ActionResult CleanBasket()
+        {
+            Session["sepet"] = null;
+            return RedirectToAction("GetCategories", "Home");
         }
 
     }

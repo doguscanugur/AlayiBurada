@@ -7,7 +7,7 @@ using System.Threading.Tasks;
 
 namespace AlayıBurada.Interfaces
 {
-    public interface ICommentService
+    public interface ICommentService :IGenericService<Comment>
     {
         List<Comment> GetComments(Product product); 
     }

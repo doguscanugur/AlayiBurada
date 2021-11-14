@@ -1,7 +1,7 @@
 ﻿@model List<AlayıBurada.Entities.Models.Product>
 
 <thead>
-    BURASI
+
     <tr>
         <th style="width: 60%">Ürün Adı</th>
         <th class="text-center" style="width: 10%">Ürün Fiyatı</th>
@@ -11,37 +11,38 @@
 <tbody>
     @using (Html.BeginForm("ConfirmTheBasket", "Basket", FormMethod.Post))
     {
-        foreach (var item in Model)
+        if (Model != null)
         {
+            foreach (var item in Model)
+            {
+                <tr>
+                    <td>@item.ProductName</td>
+                    <td class="text-center"> ₺@item.ProductPrice</td>
+
+                    <td> <a href="/Basket/DeleteProduct/@item.ProductId" class="btn btn-warning">Sil</a></td>
+                </tr>
+            }
+
             <tr>
-                <td>@item.ProductName</td>
-                <td class="text-center"> ₺@item.ProductPrice</td>
-                <td> <a class="btn btn-warning">Sil</a></td>
+                <td>
+                </td>
+                <td>
+                    <a type="submit" href="/Basket/ConfirmTheBasket/" class="btn btn-success">Satın Al</a>
+                    <a href="/Basket/CleanBasket/" class="btn btn-danger my-3">Sepeti Temizle</a>
+                </td>
+                <td>
+                </td>
             </tr>
-
+            <tr>
+                <td></td>
+                <td>
+                    <p> TOPLAM UCRET </p>
+                </td>
+                <td>
+                    <p>@ViewBag.total₺</p>
+                </td>
+            </tr>
         }
-
-        <tr>
-            <td>
-
-                <button type="submit" href="/Basket/ConfirmTheBasket/" class="btn btn-success">Satın Al</button>
-
-            </td>
-            <td>
-                <a class="btn btn-info my-3">Sepeti Temizle</a>
-            </td>
-            <td>
-            </td>
-        </tr>
-        <tr>
-            <td></td>
-            <td>
-                TOPLAM UCRET
-            </td>
-            <td>
-                <p>@ViewBag.total₺</p>
-            </td>
-        </tr>
     }
 </tbody>
 
